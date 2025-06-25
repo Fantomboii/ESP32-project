@@ -68,9 +68,15 @@
     }
 
     .show-password {
-      margin-top: -10px;
-      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
       font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .show-password input[type="checkbox"] {
+      margin-right: 8px;
+      cursor: pointer;
     }
 
     button {
@@ -132,13 +138,11 @@
     <form id="loginForm">
       <input type="text" id="username" placeholder="Enter Username" required>
       <input type="password" id="password" placeholder="Enter Password" required>
+
       <div class="show-password">
-  <label class="checkbox-container">
-    <input type="checkbox" id="togglePassword">
-    <span class="checkmark"></span>
-    Show Password
-  </label>
-</div>
+        <input type="checkbox" id="togglePassword">
+        <label for="togglePassword">Show Password</label>
+      </div>
 
       <button type="submit">Login</button>
     </form>
@@ -155,9 +159,9 @@
       { username: "ajay", password: "1234" }
     ];
 
-    // Handle form submit (includes pressing Enter)
+    // Handle login
     document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent page reload
+      e.preventDefault();
 
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
@@ -172,8 +176,8 @@
       }
     });
 
-    // Show/hide password functionality
-    document.getElementById("togglePassword").addEventListener("change", function() {
+    // Show/hide password toggle
+    document.getElementById("togglePassword").addEventListener("change", function () {
       const passwordInput = document.getElementById("password");
       passwordInput.type = this.checked ? "text" : "password";
     });
