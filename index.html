@@ -2,195 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login - Electrode Counter</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #d3f6d3;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .header-left {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      align-items: center;
-    }
-
-    .header-left img {
-      width: 50px;
-      height: auto;
-      margin-right: 10px;
-    }
-
-    .header-left h2 {
-      margin: 0;
-      color: #00A550;
-      font-size: 22px;
-    }
-
-    .login-box {
-      background: #ffffff;
-      padding: 40px 30px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      border-radius: 12px;
-      text-align: left;
-    }
-
-    .login-box h2 {
-      margin-bottom: 25px;
-      color: #333333;
-      font-size: 24px;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-    }
-
-    .toggle-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 42px;
-      height: 22px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: 0.3s;
-      border-radius: 34px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: 0.3s;
-      border-radius: 50%;
-    }
-
-    .switch input:checked + .slider {
-      background-color: #00A550;
-    }
-
-    .switch input:checked + .slider:before {
-      transform: translateX(20px);
-    }
-
-    .toggle-label {
-      cursor: pointer;
-    }
-
-    button {
-      background-color: #00A550;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      width: 100%;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #008d43;
-    }
-
-    #error {
-      color: red;
-      margin-top: 10px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @media (max-width: 500px) {
-      .login-box {
-        padding: 30px 20px;
+  <title>Login - Smart Inventory Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#1f2937',
+              darker: '#111827',
+              accent: '#3b82f6',
+              hover: '#2563eb',
+              text: '#f9fafb'
+            }
+          }
+        }
       }
-
-      .header-left {
-        flex-direction: column;
-        align-items: flex-start;
-        top: 10px;
-        left: 10px;
-      }
-
-      .header-left h2 {
-        font-size: 18px;
-      }
-
-      .header-left img {
-        width: 40px;
-      }
-    }
-  </style>
+    };
+  </script>
 </head>
-<body>
+<body class="bg-brand-darker text-brand-text min-h-screen flex items-center justify-center px-4">
 
+  <div class="absolute top-6 left-6 flex items-center">
+    <img src="logo.png" alt="Logo" class="w-10 h-auto mr-2">
+    <h2 class="text-xl text-brand-accent font-semibold">Smart Inventory</h2>
+  </div>
 
-  <!-- Login Box -->
-  <div class="login-box">
-    <h2>Smart Inventory Management</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Enter Username" required>
-      <input type="password" id="password" placeholder="Enter Password" required>
+  <div class="bg-brand-dark p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+    <form id="loginForm" class="space-y-4">
+      <input type="text" id="username" placeholder="Username" required class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-accent">
+      <input type="password" id="password" placeholder="Password" required class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-accent">
 
-      <div class="toggle-wrapper">
-        <label class="switch">
-          <input type="checkbox" id="togglePassword">
-          <span class="slider"></span>
-        </label>
-        <label for="togglePassword" class="toggle-label">Show Password</label>
+      <div class="flex items-center text-sm text-gray-300">
+        <input type="checkbox" id="togglePassword" class="mr-2 w-4 h-4">
+        <label for="togglePassword">Show Password</label>
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit" class="w-full py-2 bg-brand-accent hover:bg-brand-hover rounded-md text-white font-semibold">Login</button>
     </form>
-    <p id="error"></p>
+    <p id="error" class="text-red-500 mt-4 text-center text-sm"></p>
   </div>
 
   <script>
@@ -205,12 +58,9 @@
 
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
-
       const match = users.find(user => user.username === username && user.password === password);
-
       if (match) {
         localStorage.setItem("loggedIn", "true");
         window.location.href = "dashboard.html";
