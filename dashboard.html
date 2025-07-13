@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ELECTRODE COUNTER</title>
+  <title>Smart Inventory Management</title>
   <link rel="stylesheet" href="style.css">
   <script>
     // Login guard (check only localStorage)
@@ -12,12 +12,6 @@
   </script>
 </head>
 <body>
-  <div class="header-left">
-    <img src="logo.png" alt="Electrode Counter Logo">
-    <h2>E.S.HAJI & CO</h2>
-  </div>
-
-
   <div>
     <h1>ELECTRODE COUNT DASHBOARD</h1>
 
@@ -79,6 +73,7 @@
     }
 
     fetchData();
+    setInterval(fetchData, 10000);
   </script>
 </body>
 </html>
